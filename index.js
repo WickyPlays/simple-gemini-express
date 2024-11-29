@@ -6,6 +6,7 @@ require("dotenv").config();
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post("/api/generate-prompt", async (req, res) => {
