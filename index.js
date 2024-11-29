@@ -56,7 +56,5 @@ app.post("/api/generate-prompt", async (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
-
-export const handler = serverless(app);
