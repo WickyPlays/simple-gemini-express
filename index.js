@@ -8,7 +8,7 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
-app.post("/generate-prompt", async (req, res) => {
+app.post("/api/generate-prompt", async (req, res) => {
   const userInput = req.body.text
 
   if (!userInput) {
@@ -41,7 +41,7 @@ app.post("/generate-prompt", async (req, res) => {
 
     res.status(200).json({
       success: true,
-      text: resultText,
+      message: resultText,
     });
   } catch (error) {
     console.error("Error while generating content:", error.message);
@@ -58,3 +58,5 @@ app.post("/generate-prompt", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+export const handler = serverless(app);
