@@ -56,7 +56,20 @@ app.post("/api/generate-prompt", async (req, res) => {
   }
 });
 
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+})
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+//Ping itself every 5 minutes
+setInterval(async () => {
+  try {
+    await axios.get(process.env.HOSTNAME);
+  } catch (error) {
+    console.error("Error calling /ping endpoint:", error.message);
+  }
+}, 5 * 60 * 1000);
